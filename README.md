@@ -1,33 +1,46 @@
-# SistemaDeGestaoDeEstacionamento
+# 🚗 Sistema de Estacionamento com Controle de Veículos e Tarifas
 
-#### **SISTEMA PARA GERENCIAR UM ESTACIONAMENTO:**
+Projeto desenvolvido em **HTML, CSS e JavaScript puro**, simulando um sistema de estacionamento com cadastro de veículos, listagem, busca e cálculo automático de taxas com base no tempo estacionado.
 
-> Usuários podem registrar a entrada e a saída dos veículos e calcular o valor a ser pago com base no tempo de permanência do veículo.
+---
 
-## **FUNCIONALIDADES:**
+## 📌 Funcionalidades
 
-#### 1. Registar entrada de veículos:
+- Cadastro de veículos (placa, modelo e cor)
+- Listagem de veículos estacionados
+- Pesquisa de veículo por placa
+- Cálculo automático de valor a pagar com base no tempo estacionado
+- Sistema de taxas configuráveis:
+  - Taxa por minuto
+  - Taxa por hora
+  - Taxa extra
+- Atualização dinâmica das informações na tela
 
-* Usuário pode inserir informações do veículo (placa, modelo e cor)
+---
 
-* Registro da hora de entrada do veículo no sistema
-  
-#### 2. Registro de saída de veículos:
+## 💻 Tecnologias utilizadas
 
-* Usuário pode inserir a placa do veículo para buscar as informações e a hora de entrada
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
 
-* Cálculo do tempo de permanência do veículo no estacionamento, com base na hora de entrada e na hora atual
+---
 
-* Exibe as informações do veículo e o seu tempo de permanência
-  
-#### 3. Calcula o valor a ser pago:
+## 🧠 Como o sistema funciona
 
-* Administrador pode definir as tarifas do estacionamento (Ex: Preço por hora, preço por dia, preço para períodos específicos).
+O sistema armazena os veículos em um array JavaScript e registra automaticamente:
+- Data de entrada
+- Hora de entrada
+- Minutos de entrada
 
-* Calcula o valor a ser pago com base nas tarifas e no tempo de permanência do veículo.
+Ao buscar um veículo, o sistema:
+1. Calcula o tempo atual menos o tempo de entrada
+2. Converte isso em horas e minutos
+3. Aplica as taxas configuradas
+4. Retorna o valor final a pagar
 
-* Exibe o valor a ser pago ao usuário.
+---
 
-
+## 📷 Interface do Projeto
 
 ![image](https://github.com/liane-heidemann/SistemaDeGestaoDeEstacionamento/assets/54177181/41b9ea5f-1afb-4a8e-8ed9-b777ab60d2eb)
