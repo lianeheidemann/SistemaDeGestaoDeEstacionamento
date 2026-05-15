@@ -43,4 +43,4 @@ Ao buscar um veículo, o sistema:
 
 ## 📷 Interface do Projeto
 
-<img width="1439" height="1407" alt="1000312927" src="https://github.com/user-attachments/assets/b6cc0d81-464f-4455-8ed0-a2b9cfbea33d" />
+<img width="1439" height="1407" alt="1000312927" src="https://github.com/user-attachments/assets/e77d06e6-97ca-4448-b48c-5d4f4ba8b6c7" />
