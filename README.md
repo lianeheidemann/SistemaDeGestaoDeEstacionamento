@@ -43,4 +43,4 @@ Ao buscar um veículo, o sistema:
 
 ## 📷 Interface do Projeto
 
-![image](https://github.com/liane-heidemann/SistemaDeGestaoDeEstacionamento/assets/54177181/41b9ea5f-1afb-4a8e-8ed9-b777ab60d2eb)
+<img width="1439" height="1407" alt="1000312927" src="https://github.com/user-attachments/assets/b6cc0d81-464f-4455-8ed0-a2b9cfbea33d" />
