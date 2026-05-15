@@ -1,217 +1,277 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Estacionamento</title>
+
 <style>
-    button, input, select {
-        margin: 6px 0;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-    #containerPrincipal {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgb(210, 210, 210);
-    }
-    #containerCadastro {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        padding: 10px;
-        background-color: rgb(220, 220, 220);
-    }
-    #containerCarros {
-    	width: 80%;
-        max-width: 700px;
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        background-color: rgb(220, 220, 220);
-        padding: 10px;
-    }
-    #containerTaxas {
-    	width: 80%;
-        max-width: 700px;
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        background-color: rgb(220, 220, 220);
-        padding: 10px;
-    }
-    #direcaoRight {
-        display: flex;
-        justify-content: right;
-        width: 100%;
-    }
-    #direcaoLeft {
-        display: flex;
-        justify-content: left;
-        width: 100%;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+}
+
+/* HEADER */
+.header {
+    background: #0d3b66;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* GRID PRINCIPAL */
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+/* INPUTS */
+input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* BUTTONS */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-blue { background: #1e88e5; color: white; }
+.btn-green { background: #2ecc71; color: white; }
+.btn-orange { background: #f39c12; color: white; }
+.btn-gray { background: #7f8c8d; color: white; }
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* TEXTAREA */
+textarea {
+    width: 100%;
+    height: 140px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    resize: none;
+}
+
+/* ROW */
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* TITLES */
+h3 {
+    margin-top: 0;
+}
+
+/* RESULT */
+.result {
+    background: #eafaf1;
+    border-left: 5px solid #2ecc71;
+    padding: 10px;
+    border-radius: 8px;
+    white-space: pre-line;
+}
 </style>
+</head>
 
 <body>
-	<div id="containerPrincipal">&nbsp; 
-        <div id="containerCadastro">
-			<h3><b>CADASTRAR VEICULO</b></h3>
-			<input type="text" id="placa" style="height: 25px" name="placa" placeholder="Placa">
-			<input type="text" id="modelo" style="height: 25px" name="modelo" placeholder="Modelo">
-			<input type="text" id="cor" style="height: 25px" name="cor" placeholder="Cor">
-			<div id="direcaoRight">
-				<input type="submit" value="Adicionar Veiculo" id="addVeiculo">
-			</div>
-		</div>&nbsp; 
-      
-        <div id="containerCarros">
-			<div>
-				<b>Carros Cadastrados no Estacionamento:</b>
-			</div>
-			<div>
-				<textarea disabled style="width:100%;height:100px" id="query-box" name="querybox" placeholder="Cadastros"></textarea>
-			</div>
-			<div id="direcaoLeft">
-				<button id="botaoMostrarCarros">Mostrar Carros Cadastrados</button>
-				<button id="botaoLimpar">Limpar Tela</button>
-			</div>
-			<div id="direcaoRight">
-				<input type="text" style="width:150" id="buscarPlaca" name="buscarPlaca" placeholder="Placa do Carro">
-				<input type="submit" value="Pesquisar e Calcular" id="botaoBuscarPlaca">&nbsp;
-			</div>
-		</div>&nbsp; 
-      
-        <div id="containerTaxas">
-			<text><b> Taxas Padrão do Estacionamento:</b></text>
-			<textarea disabled style="width:80%;height:22px" id="query-box2" name="querybox2" placeholder="Taxa Minuto = R$0.25 / Taxa Hora = R$15 / Taxa Extra: R$0"></textarea>&nbsp; <div><b> Alterar Taxas Padrão:</b>
-			</div>
-			<div>
-				<input type="text" style="width:100px" id="taxaMinuto" name="taxaMinuto" placeholder="R$ 0,00">
-				<text style="font-size:14px">x Minutos</text>
-			</div>
-			<div>
-				<input type="text" style="width:100px" id="taxaHora" name="taxaHora" placeholder="R$ 0,00">
-				<text style="font-size:14px">x Horas</text>
-			</div>
-			<div>
-				<input type="text" style="width:100" id="taxaExtra" name="taxaExtra" placeholder="R$ 0,00">
-				<text style="font-size:14px">+ Taxa Extra</text>
-			</div>
-			<div>
-				<input type="submit" style="width:120" value="Alterar Tarifas" id="botaoAlterarTaxas">
-			</div>
-		</div>&nbsp; 
+
+<div class="header">
+🚗 Sistema de Estacionamento
+</div>
+
+<div class="container">
+
+    <!-- CADASTRO -->
+    <div class="card">
+        <h3>Cadastro de Veículo</h3>
+
+        <div class="row">
+            <input id="placa" placeholder="Placa">
+            <input id="modelo" placeholder="Modelo">
+            <input id="cor" placeholder="Cor">
+        </div>
+
+        <button class="btn-blue" id="addVeiculo">Adicionar Veículo</button>
     </div>
-    <script src="myscripts.js"></script>
-</body>
+
+    <div class="grid">
+
+        <!-- LISTA -->
+        <div class="card">
+            <h3>Veículos Estacionados</h3>
+
+            <textarea id="saida" disabled></textarea>
+
+            <div class="row">
+                <button class="btn-blue" id="mostrar">Mostrar</button>
+                <button class="btn-gray" id="limpar">Limpar</button>
+            </div>
+
+            <h4>Pesquisar veículo</h4>
+
+            <div class="row">
+                <input id="buscar" placeholder="Placa">
+                <button class="btn-green" id="buscarBtn">Pesquisar e Calcular</button>
+            </div>
+
+            <div id="resultado" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- TAXAS -->
+        <div class="card">
+            <h3>Taxas</h3>
+
+            <textarea disabled id="taxasInfo">
+Minuto: R$0.25
+Hora: R$15
+Extra: R$0
+            </textarea>
+
+            <input id="tMin" placeholder="Taxa minuto">
+            <input id="tHora" placeholder="Taxa hora">
+            <input id="tExtra" placeholder="Taxa extra">
+
+            <button class="btn-orange" id="alterar">Alterar Taxas</button>
+        </div>
+
+    </div>
+</div>
 
 <script>
-    let placaX = document.getElementById("placa") 
-    let modeloX = document.getElementById("modelo")
-    let corX = document.getElementById("cor")
-    let queryBox = document.getElementById("query-box") 
-    let botaoMostrarVeiculos = document.getElementById("botaoMostrarCarros")
-    let botaoLimpar = document.getElementById("botaoLimpar")
-    let botaoAddVeiculo = document.getElementById("addVeiculo")
-    let buscarPlaca = document.getElementById("buscarPlaca") 
-    let botaoBuscarVeiculo = document.getElementById("botaoBuscarPlaca")
-    let queryBox2 = document.getElementById("query-box2") 
-    let taxaMinutoX = document.getElementById("taxaMinuto") 
-    let taxaHoraX = document.getElementById("taxaHora") 
-    let taxaExtraX = document.getElementById("taxaExtra") 
-    let botaoAlterarTaxas = document.getElementById("botaoAlterarTaxas")
-    let taxas = [ 0.25 , 15 , 0]
-    let valorPagar = 0
-    let carrosEstacionados = [{placa:"1542-XXXX",modelo:"Volkvagen",cor:"Vermelho",dia:"10/04/2023",hora:"00",minutos:"55"},
-                              {placa:"5145-XXXX",modelo:"Sedan",cor:"Branco",dia:"10/04/2023",hora:"00",minutos:"15"},
-                              {placa:"8742-XXXX",modelo:"Fox",cor:"Azul",dia:"10/04/2023",hora:"00",minutos:"01"}]
-    //FUNÇÕES
-    function addQueryBox(input) {
-        queryBox.value = input 
-    }  
-    function addQueryBox2(input) {
-        queryBox2.value = input 
-    }
-    function elementosEntrada() {
-        data = new Date
-        let horaAgora = ("0" + data.getHours()).slice(-2);
-        let minutosAgora = ("0" + data.getMinutes()).slice(-2);
+/* ================= DATA ================= */
+let carros = [
+    {placa:"1542-XXXX",modelo:"Volkwagen",cor:"Vermelho",hora:0,min:55,dia:"10/04/2023"},
+    {placa:"5145-XXXX",modelo:"Sedan",cor:"Branco",hora:0,min:15,dia:"10/04/2023"},
+    {placa:"8742-XXXX",modelo:"Fox",cor:"Azul",hora:0,min:1,dia:"10/04/2023"}
+];
 
-        return {placa: placaX.value,
-                modelo: modeloX.value,
-                cor: corX.value,
-                dia: ("0" + data.getDate()).slice(-2) +"/"+ ("0" + (data.getMonth() + 1)).slice(-2) + "/"+data.getFullYear(),
-                hora: ("0" + data.getHours()).slice(-2),
-                minutos: ("0" + data.getMinutes()).slice(-2)
-        }
-    }
-    function listaProdutos() {
-        let exibirItens = ""       
-        for(var i=0; i<carrosEstacionados.length; i++) {
-            exibirItens += (i+1)
-                        +"] - Placa: "+carrosEstacionados[i].placa
-                        +", Modelo: "+carrosEstacionados[i].modelo
-                        + ", Cor: " +carrosEstacionados[i].cor
-                        + ", Data: " +carrosEstacionados[i].dia
-                        + ", Hora: " +carrosEstacionados[i].hora+":"+carrosEstacionados[i].minutos+"\n"
-        }
-        return exibirItens
-    }
-    function buscarVeiculo() {
-        dataX = new Date
-        let veiculoEncontrado = ""
-        for(var i=0; i<carrosEstacionados.length; i++) {
-            if(carrosEstacionados[i].placa == buscarPlaca.value) {
-                let minhasHoras = dataX.getHours()-carrosEstacionados[i].hora //hora tatual - hora que estacionou
-                let meusMinutos = 0
-                if(dataX.getMinutes() < carrosEstacionados[i].minutos) { // minuto atual - minuto que estacionou  OU 
-                    meusMinutos = (60-carrosEstacionados[i].minutos ) + dataX.getMinutes()
-                    minhasHoras--
-                }
-                else {
-                    meusMinutos = dataX.getMinutes() - carrosEstacionados[i].minutos
-                }
-                valorPagar = (taxas[0]*meusMinutos)+(taxas[1]*minhasHoras) + Number(taxas[2]) 
-                veiculoEncontrado += (i+1)  + "] - Placa: " +carrosEstacionados[i].placa
-                                            +   ", Modelo: "+carrosEstacionados[i].modelo
-                                            +   ", Cor: "   +carrosEstacionados[i].cor
-                                            +   ", Data: "  +carrosEstacionados[i].dia
-                                            +   ", Hora: "  +carrosEstacionados[i].hora+":"+carrosEstacionados[i].minutos+"h\n"
-                                            +   "Hora de Entrada: " + carrosEstacionados[i].hora+":"+carrosEstacionados[i].minutos+"h\n"
-                                            +   "Hora Atual:      " + ("0"+dataX.getHours()).slice(-2)+":"+("0"+dataX.getMinutes()).slice(-2)+"h\n"
-                                            +   "Tempo Decorrido: " + ("0"+minhasHoras).slice(-2)+ " horas e "+("0"+meusMinutos).slice(-2)+" minutos\n\n" 
-                                            +   "[PREÇO A PAGAR]:  R$" + valorPagar
-                return veiculoEncontrado
-            }
-        }
-        return "Placa de Veiculo não Cadastrado \nou \nDados Inseridos Estão Incorretos"
+let taxas = {
+    minuto: 0.25,
+    hora: 15,
+    extra: 0
+};
+
+/* ================= FUNÇÕES ================= */
+
+const $ = (id) => document.getElementById(id);
+
+function agora() {
+    const d = new Date();
+    return {
+        hora: d.getHours(),
+        min: d.getMinutes(),
+        dia: d.toLocaleDateString()
+    };
+}
+
+function listar() {
+    return carros.map((c, i) =>
+        `${i+1}) ${c.placa} | ${c.modelo} | ${c.cor} | ${c.dia} ${c.hora}:${c.min}`
+    ).join("\n");
+}
+
+function adicionar() {
+    const t = agora();
+
+    carros.push({
+        placa: $("placa").value,
+        modelo: $("modelo").value,
+        cor: $("cor").value,
+        hora: t.hora,
+        min: t.min,
+        dia: t.dia
+    });
+
+    $("saida").value = listar();
+}
+
+function buscar() {
+    const car = carros.find(c => c.placa === $("buscar").value);
+
+    if (!car) {
+        $("resultado").style.display = "block";
+        $("resultado").innerText = "Veículo não encontrado";
+        return;
     }
 
-    //BOTÕES
-    botaoMostrarVeiculos.addEventListener("click", function() { 
-        addQueryBox("")    
-        addQueryBox(listaProdutos())
-    })
-    botaoLimpar.addEventListener("click", function() {
-        addQueryBox("")
-    })
-    botaoAddVeiculo.addEventListener("click", function() {
-        carrosEstacionados.push(elementosEntrada());
-        addQueryBox(listaProdutos())
-    })
-    botaoBuscarVeiculo.addEventListener("click", function() {
-        addQueryBox("") 
-        addQueryBox(buscarVeiculo()) 
-    })
-    botaoAlterarTaxas.addEventListener("click", function() {
-        if (taxaMinutoX.value!=""){
-            taxas[0] = taxaMinutoX.value
-        }
-        if (taxaHoraX.value!=""){
-            taxas[1] = taxaHoraX.value
-        }
-        if (taxaExtraX.value!=""){
-            taxas[2] = taxaExtraX.value
-        }
-        addQueryBox("Taxas alteradas!") 
-        addQueryBox2("Taxa Minuto = R$"+taxas[0]+" / Taxa Hora = R$"+taxas[1]+" / Taxa Extra: R$"+taxas[2]) 
-    })
+    const now = new Date();
+
+    let horas = now.getHours() - car.hora;
+    let minutos = now.getMinutes() - car.min;
+
+    if (minutos < 0) {
+        minutos += 60;
+        horas--;
+    }
+
+    const valor = (horas * taxas.hora) + (minutos * taxas.minuto) + taxas.extra;
+
+    $("resultado").style.display = "block";
+    $("resultado").innerText =
+`Placa: ${car.placa}
+Modelo: ${car.modelo}
+Tempo: ${horas}h ${minutos}min
+Valor a pagar: R$ ${valor.toFixed(2)}`;
+}
+
+/* ================= EVENTOS ================= */
+
+$("addVeiculo").onclick = adicionar;
+
+$("mostrar").onclick = () => {
+    $("saida").value = listar();
+};
+
+$("limpar").onclick = () => {
+    $("saida").value = "";
+};
+
+$("buscarBtn").onclick = buscar;
+
+$("alterar").onclick = () => {
+    if ($("tMin").value) taxas.minuto = Number($("tMin").value);
+    if ($("tHora").value) taxas.hora = Number($("tHora").value);
+    if ($("tExtra").value) taxas.extra = Number($("tExtra").value);
+
+    $("taxasInfo").value =
+`Minuto: R$${taxas.minuto}
+Hora: R$${taxas.hora}
+Extra: R$${taxas.extra}`;
+};
 </script>
+
+</body>
 </html>
